@@ -1,9 +1,9 @@
 package teste.mysql;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 import br.com.guigoff.db.ConnectionFactory;
 
@@ -13,8 +13,8 @@ public class TestaListagem {
 		ConnectionFactory ConnectionFactory = new ConnectionFactory();
 		Connection con =  ConnectionFactory.recuperaConexao();
 		
-		Statement stm = con.createStatement();
-		stm.execute("select id, nome, descricao from produto");
+		PreparedStatement stm = con.prepareStatement("select id, nome, descricao from produto");
+		stm.execute();
 		
 		ResultSet rst = stm.getResultSet();
 		
